@@ -1,0 +1,63 @@
+<mvc:View controllerName="zjblessonsForm.controller.View1" 
+xmlns:html="http://www.w3.org/1999/xhtml"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:core="sap.ui.core"
+displayBlock="true" xmlns="sap.m">
+	
+	<App>
+        <pages>
+            <Page title="Форма регистрации">
+                <content>
+                	    <VBox width="80%" class="sapUiSmallMargin">
+                            <Label required="true" text="Имя:"/>
+                            <Input id="firstName" 
+                            	   maxLength = "64" 
+                            	   required ="true"
+                            	   placeholder ="не более 64 символов"
+                            	   class="sapUiSmallMarginTopBottom" />
+
+                            <Label required="true" text="Фамилия"/>
+                            <Input id="secondName" maxLength = "64"  required ="true" placeholder ="не более 64 символов"/>
+
+							<Label required="true" text="Место жительства"/>
+                           	<Select id = "cities"></Select>
+                            
+                            <Label required="true" text="Teлефон"/>
+                            <MaskInput id = "tel" mask = "+3759999999"  placeholder  = "Номер телефона" required ="true"/>
+                            
+                            <Label required = "true" text="Электронная почта"/>
+                            <Input id="emailAddress" maxLength = "256"   required ="true" placeholder ="не более 256 символов"/>
+
+							<Label required = "true" text="Пароль"/>
+                            <Input id ="password" type = "Password" maxLength = "64"  required = "true" placeholder = "не более 64 символов"/>
+                            
+							<Label required="true" text="Подтвердите пароль"/>
+                            <Input id="confirm"  type = "Password" required ="true"   change = "onCheckPassword"/>
+                           
+                            <Label text="Промокод"/>
+							<HBox>
+								<Input id = "getPromocode"  type = "Password"/>
+								<Button press="_readPromocodefromURLOrFromService" text="Получить промокод"/>
+							 </HBox>
+							 <HBox>
+								<Input id = "checkPromocode"  placeholder="Подтвердите промокод"/>
+								 <Button press="verifyPromocode" text="Проверить промокод"/>
+							 </HBox>
+							
+							<CheckBox id = "checkbox" text="Согласен с" select = "checkChangeBoxSelectedProperty"/>
+							<Link id = "conditions"
+								  text="условиями пользовательского соглашения"
+								  press="handleLinkPress" />
+								 <Text text = "и"/>
+							<Link text="правил платформы"
+								  press="handleLinkPress" />
+							<HBox>
+		                        <Button id = "submit" enabled = "{=${formModel>/selected}}" press="onSubmit" text="Зарегистрироваться"/>
+		                        <Button press="onResetForm" text="Отмена"/>
+	                        </HBox>
+                        </VBox>
+                    </content>
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
